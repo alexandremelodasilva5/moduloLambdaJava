@@ -5,12 +5,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import entities.MyComparator;
 import entities.Product;
 import util.ProductConsumer;
 import util.ProductPredicate;
+import util.UpperCaseName;
 
 public class Program {
 
@@ -53,8 +56,16 @@ public class Program {
 		//list.forEach(Product::staticPriceUpdate);
 		//list.forEach(Product::nonStaticPriceUpdate);
 		//list.forEach(cons);
-		list.forEach(p ->p.setPrice(p.getPrice()*1.1));
-		list.forEach(System.out::println);
+		//list.forEach(p ->p.setPrice(p.getPrice()*1.1));
+		
+		//Function<Product, String> func = p -> p.getName().toUpperCase();
+		//List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList());
+		//List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
+		//List<String> names = list.stream().map(Product::nonstaticUpperCaseName).collect(Collectors.toList());
+		//List<String> names = list.stream().map(func).collect(Collectors.toList());
+		List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
+		//list.forEach(System.out::println);
+		names.forEach(System.out::println);
 		/*for(Product p:list) {
 			System.out.println(p);
 		}*/
