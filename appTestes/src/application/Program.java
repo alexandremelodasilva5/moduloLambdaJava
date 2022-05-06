@@ -64,11 +64,11 @@ public class Program {
 		//List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
 		//List<String> names = list.stream().map(Product::nonstaticUpperCaseName).collect(Collectors.toList());
 		//List<String> names = list.stream().map(func).collect(Collectors.toList());
-		List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
+		//List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
 		
 		ProductService ps = new ProductService();
 		
-		double sum = ps.filteredSum(list);
+		double sum = ps.filteredSum(list, p -> p.getName().charAt(0) == 'M');
 		
 		
 		//list.forEach(System.out::println);
