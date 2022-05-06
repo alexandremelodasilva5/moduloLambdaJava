@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import entities.MyComparator;
 import entities.Product;
+import model.services.ProductService;
 import util.ProductConsumer;
 import util.ProductPredicate;
 import util.UpperCaseName;
@@ -22,7 +23,7 @@ public class Program {
 		List<Product> list = new ArrayList<>();
 		Product prod1 = new Product("TV", 1000.0);
 		Product prod2 = new Product("Note", 3000.0);
-		Product prod3 = new Product("tablet", 2000.0);
+		Product prod3 = new Product("Tablet", 2000.0);
 		list.add(prod3);
 		list.add(prod2);
 		list.add(prod1);
@@ -64,11 +65,18 @@ public class Program {
 		//List<String> names = list.stream().map(Product::nonstaticUpperCaseName).collect(Collectors.toList());
 		//List<String> names = list.stream().map(func).collect(Collectors.toList());
 		List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
+		
+		ProductService ps = new ProductService();
+		
+		double sum = ps.filteredSum(list);
+		
+		
 		//list.forEach(System.out::println);
-		names.forEach(System.out::println);
+		//names.forEach(System.out::println);
 		/*for(Product p:list) {
 			System.out.println(p);
 		}*/
+		System.out.println("Soma:" + String.format("%.2f", sum));
 		
 		
 	}
