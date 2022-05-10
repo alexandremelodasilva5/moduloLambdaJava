@@ -38,8 +38,9 @@ public class Program {
 			ProductService ps = new ProductService();
 			double average = ps.average(list);
 			List<Product> pricesUnderAverage = list.stream().filter(p -> p.getPrice() < average)
-					.collect(Collectors.toList());
-			pricesUnderAverage.sort((p1, p2) -> p2.getPrice().compareTo(p1.getPrice()));
+			.collect(Collectors.toList());
+			pricesUnderAverage.sort((p1, p2) -> p2.getName().toUpperCase().compareTo(p1.getName().toUpperCase()));
+			
 			System.out.printf("Average price: %.2f%n", average);
 			for (Product p : pricesUnderAverage) {
 				System.out.println(p.getName());
